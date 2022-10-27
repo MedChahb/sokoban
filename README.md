@@ -1,5 +1,6 @@
-# projet sokoban
+# projet sokoban  
+<img src="Sokoban_ani.gif" alt="error img not found"/>
 
-
-mohamed yassine azaza  
-mohammed chahbaoui 
+## projet réalisé par :  
+mohamed yassine azaza.  
+mohammed chahbaoui.  
