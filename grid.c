@@ -26,13 +26,13 @@ void init_level(const char* file_path, Grid* grille){
 		int current_column = 0;
 		while(*buffer && *buffer != '\n'){
 			// parametrer le champs Player
-			if (*buffer == '@') {
+			if (*buffer == PLAYER) {
 				(grille->Player).x = current_column;
 				(grille->Player).y = current_row;
 			}
 			
 			// chaque entité (pointeur) lue est placée dans la grille en utilisant la enum
-			grille->game_grid[i++] = (*buffer=='#')?WALL : (*buffer=='$')?BOX : (*buffer=='@')? PLAYER : (*buffer=='.')?GOAL : (*buffer==' ')?NONE : '\0' ; 
+			grille->game_grid[i++] = *buffer ; 
 			current_column += 1;
 			buffer += 1;
 			
@@ -48,9 +48,11 @@ void init_level(const char* file_path, Grid* grille){
 void display(Grid* grille){
 	int colonne = grille->column_number; // nmbr de colonne de la grille
 	int ligne = grille->row_number; // nmbr de ligne de la grille
-	int taille_grille_2D = colonne*ligne ; //taille de la grille
-	for (int i=0; i<=taille_grille_2D; i++){
+	int taille_grille_1D = colonne*ligne ; //taille de la grille
+	for (int i=0; i<=taille_grille_1D; i++){
 		if(i%colonne==0) printf("\n"); // saut de ligne si en arrive a la fin du ligne
 		printf("%c", grille->game_grid[i]);
 	}
+	printf("\ntape Z to go UP, S to go DOWN, D to go RIGHT or Q to go LEFT, X to exit the game\n");
+	printf("\n");
 }
