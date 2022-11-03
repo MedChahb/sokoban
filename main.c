@@ -3,6 +3,7 @@
 #include <stdbool.h>
 int main(void){
 	
+	
 	bool run = true;
 	while(run){
 		char entry = fgetc(stdin);
@@ -13,5 +14,6 @@ int main(void){
 			}
 		}
 	}
+	
 }
 
