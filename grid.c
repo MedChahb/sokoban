@@ -38,3 +38,13 @@ void init_level(const char* file_path, Grid* grille){
 	// fermeture du fichier
 	fclose(file);
 }
+
+void display(Grid* grille){
+	int colonne = grille->column_number; // nmbr de colonne de la grille
+	int ligne = grille->row_number; // nmbr de ligne de la grille
+	int taille_grille_2D = colonne*ligne ; //taille de la grille
+	for (int i=0; i<=taille_grille_2D; i++){
+		if(i%colonne==0) printf("\n"); // saut de ligne si en arrive a la fin du ligne
+		printf("%c", grille->game_grid[i]);
+	}
+}
