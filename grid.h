@@ -18,5 +18,6 @@ typedef struct {
 	int row_number; ///< Nomber de ligne de game_grid
 }Grid ;
 void init_level(const char* file_path, Grid* grille);
+void display(Grid* grille);
 
 #endif
