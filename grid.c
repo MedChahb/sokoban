@@ -25,6 +25,12 @@ void init_level(const char* file_path, Grid* grille){
 		char* buffer = line;
 		int current_column = 0;
 		while(*buffer && *buffer != '\n'){
+			// parametrer le champs Player
+			if (*buffer == '@') {
+				(grille->Player).x = current_column;
+				(grille->Player).y = current_row;
+			}
+			
 			// chaque entité (pointeur) lue est placée dans la grille en utilisant la enum
 			grille->game_grid[i++] = (*buffer=='#')?WALL : (*buffer=='$')?BOX : (*buffer=='@')? PLAYER : (*buffer=='.')?GOAL : (*buffer==' ')?NONE : '\0' ; 
 			current_column += 1;
