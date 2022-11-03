@@ -7,7 +7,7 @@ main.o : main.c grid.h
 grid.o : grid.c grid.h
 	gcc -w -c grid.c
 	
-player.o : player.c player.h
+player.o : player.c grid.h 
 	gcc -w -c player.c
 	
 clean :
