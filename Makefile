@@ -5,7 +5,7 @@ main.o : main.c grid.h
 	gcc -c main.c
 	
 grid.o : grid.c grid.h
-	gcc -c grid.c
+	gcc -w -c grid.c
 	
 clean :
 	rm *.o 
