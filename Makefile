@@ -1,5 +1,7 @@
 main : main.o grid.o player.o
 	gcc  grid.o main.o player.o -o main
+	make clean
+	./main
 	
 main.o : main.c grid.h
 	gcc -w -c main.c
