@@ -1,15 +1,17 @@
 #include <stdio.h>
 #include "grid.h"
 #include <stdbool.h>
+#include <ctype.h>
+
 int main(void){
 	Grid grille; 
-	init_level("/home/chahbaoui/Desktop/projet_tech_dev/sokoban/level1.txt", &grille); 
+	init_level("level1.txt", &grille); 
 	display(&grille);
 	
 	bool run = true;
 	while(run){
-		char entry = fgetc(stdin);
-		switch(entry){
+		char entry = tolower(fgetc(stdin)); // tolower() used to ignore upper and lower case
+		switch(entry){ 
 			case 'z':
 				move_player(&grille, TOP);
 				break;
