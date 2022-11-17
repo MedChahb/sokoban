@@ -1,6 +1,7 @@
 main : main.o grid.o player.o
 	gcc  grid.o main.o player.o -o main
 	make clean
+	clear
 	./main
 	
 main.o : main.c grid.h
