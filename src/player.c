@@ -1,4 +1,4 @@
-#include "grid.h"
+#include "../include/grid.h"
 
 // global variable contenent l'entité de la grille que le joueur a passé sur. (par defaut NONE)
 enum CaseType entite = NONE;
@@ -34,7 +34,7 @@ void move_player(Grid* grille, enum Direction dir){
 				// entite = NONE ou GOAL pas d'autre ,sinon en revient au defaut (NONE)
 				entite = NONE;
 				boolean = 0;
-				printf("\!! MOUVEMENT INVALIDE !!\n\n");
+				printf("\n!! MOUVEMENT INVALIDE !!\n");
 			}
 			
 			

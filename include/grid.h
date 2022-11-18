@@ -1,6 +1,7 @@
 #ifndef GRID_HEADER
 #define GRID_HEADER
 
+#include <stdio.h>
 #include "player.h"
 enum CaseType{
 	WALL = '#',

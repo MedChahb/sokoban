@@ -1,11 +1,11 @@
 #include <stdio.h>
-#include "grid.h"
+#include "../include/grid.h"
 #include <stdbool.h>
 #include <ctype.h>
 
 int main(void){
 	Grid grille; 
-	init_level("level1.txt", &grille); 
+	init_level("levels/level1.txt", &grille); 
 	display(&grille);
 	
 	bool run = true;
