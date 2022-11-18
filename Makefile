@@ -1,17 +1,20 @@
-main : main.o grid.o player.o
-	gcc  grid.o main.o player.o -o main
-	make clean
-	clear
-	./main
+S_REP = src/
+H_REP = include/
+O_REP = obj/
+B_REP = bin/
+D_REP = doc/
+
+EXE = $(B_REP)main
+
+$(EXE) : $(O_REP) $(B_REP) $(O_REP)main.o $(O_REP)grid.o $(O_REP)player.o
+	gcc  $(O_REP)grid.o $(O_REP)main.o $(O_REP)player.o -o $(B_REP)main
 	
-main.o : main.c grid.h
-	gcc -w -c main.c
+$(O_REP)%.o : $(S_REP)%.c
+	gcc -c $< -o $@
+
 	
-grid.o : grid.c grid.h
-	gcc -w -c grid.c
-	
-player.o : player.c grid.h 
-	gcc -w -c player.c
-	
+$(O_REP) $(B_REP) :
+	mkdir $@
+
 clean :
-	rm *.o 
+	rm -r $(O_REP) $(B_REP)
