@@ -1,3 +1,4 @@
 # Exclude rep
 /obj
 /bin
+/doc
