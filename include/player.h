@@ -13,6 +13,7 @@
  * @enum
  * @brief specifie chaque direction donnée par le joueur
  */
+
 enum Direction {
 	TOP = 'z',
 	BOTTOM = 's',
