@@ -26,14 +26,16 @@ enum CaseType{
 	NONE = ' '
 };
 /**
+ *\typedef typedef struct Grid;
+ * type synonyme de \c struct \c Grid
  * @struct Grid grid.h
  * @brief Cette structure contient la grille et ces dimensions.
  * concernant la grille du jeu et son contenu
  */
 typedef struct {
-	enum CaseType* game_grid; ///< Tableau contenant les entités présents dans le jeu
-	int column_number; ///< Nombre de colonne de game_grid
-	int row_number; ///< Nomber de ligne de game_grid
+	enum CaseType* game_grid; /**< Tableau contenant les entités présents dans le jeu */
+	int column_number; /**< Nombre de colonne de game_grid */
+	int row_number; /**< Nomber de ligne de game_grid */
 	struct player Player;
 }Grid ;
 

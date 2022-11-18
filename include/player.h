@@ -27,8 +27,8 @@ enum Direction {
  * 
  */
 struct player{
-	int x;
-	int y;
+	int x;/**< point colonne */
+	int y;/**< point ligne  */
 };
 
 
