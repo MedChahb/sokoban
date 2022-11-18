@@ -14,7 +14,7 @@ $(EXE) : $(OBJ) | $(B_REP) $(D_REP)
 $(O_REP)%.o : $(S_REP)%.c | $(O_REP)
 	gcc -c $< -o $@
 
-$(B_REP) $(O_REP) $(D_REP):
+$(B_REP) $(O_REP) :
 	mkdir $@
 
 $(D_REP) :
