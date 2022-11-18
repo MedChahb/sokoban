@@ -3,7 +3,7 @@
 Mohamed Yassine Azaza.  
 Mohammed Chahbaoui.  
 
-## c'est quoi <u>le sokoban</u> ?
+## C'est quoi <u>le sokoban</u> ?
 - preview du jeu : 
 <div><img src="img/Sokoban_ani.gif" width="20%"></div>
 
