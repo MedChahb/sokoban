@@ -5,16 +5,18 @@ B_REP = bin/
 D_REP = doc/
 
 EXE = $(B_REP)main
+SRC = $(wildcard $(S_REP)*.c)
+OBJ = $(SRC:$(S_REP)%.c=$(O_REP)%.o)
 
-$(EXE) : $(O_REP) $(B_REP) $(O_REP)main.o $(O_REP)grid.o $(O_REP)player.o
-	gcc  $(O_REP)grid.o $(O_REP)main.o $(O_REP)player.o -o $(B_REP)main
-	
-$(O_REP)%.o : $(S_REP)%.c
+$(EXE) : $(OBJ) | $(B_REP) 
+	gcc $^ -lm -o $@ 
+
+$(O_REP)%.o : $(S_REP)%.c | $(O_REP)
 	gcc -c $< -o $@
 
-	
-$(O_REP) $(B_REP) :
+$(B_REP) $(O_REP):
 	mkdir $@
+
 
 clean :
 	rm -r $(O_REP) $(B_REP)
