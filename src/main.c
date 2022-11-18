@@ -1,9 +1,9 @@
 /**
  * @file main.c
  * @author Mohammed chahbaoui Mohamed yassine azaza
- * @brief 
+ * @brief  permet l'éxecution de code
  * @version 0.1
- * @date 2022-11-18
+ * @date 2022-11-07
  * 
  * @copyright Copyright (c) 2022
  * 
@@ -11,7 +11,9 @@
 #include "../include/grid.h"
 #include <stdbool.h>
 #include <ctype.h>
-
+/**
+ * @brief début de la main
+ */
 int main(void){
 	Grid grille; 
 	init_level("levels/level1.txt", &grille); 

@@ -1,7 +1,24 @@
+/**
+ * @file grid.c
+ * @author Mohammed chahbaoui Mohamed yassine azaza 
+ * @brief  permet la création et l'affichage de la grille
+ * @version 0.1
+ * @date 2022-11-07
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include "../include/grid.h"
 #include <stdlib.h>
 #include <stdio.h>
-
+/**
+ * @brief permet de specifier la structure Grid !!!
+ * @fn init_level(const char* file_path, Grid* grille)
+ * @param file_path repertoire de fichier
+ * @param grille adresse de la structure Grid !!! 
+ * @return intialise les variables de la structure Grid !!!
+ */
 void init_level(const char* file_path, Grid* grille){
 	// ouverture du fichier en mode lecture
 	FILE* file = fopen(file_path, "r");
@@ -44,13 +61,17 @@ void init_level(const char* file_path, Grid* grille){
 	// fermeture du fichier
 	fclose(file);
 }
-
+/**
+ * @brief permet l'afichage de la grille 
+ * 
+ * @param grille adresse de la structure Grid !!! 
+ */
 void display(Grid* grille){
 	int colonne = grille->column_number; // nmbr de colonne de la grille
 	int ligne = grille->row_number; // nmbr de ligne de la grille
 	int taille_grille_1D = colonne*ligne ; //taille de la grille
 	for (int i=0; i<=taille_grille_1D; i++){
-		if(i%colonne==0) printf("\n"); // saut de ligne si en arrive a la fin du ligne
+		if(i%colonne==0) printf("\n"); // saut de ligne si en arrive a la fin du colonne
 		printf("%c", grille->game_grid[i]);
 	}
 	printf("\ntape Z to go UP, S to go DOWN, D to go RIGHT or Q to go LEFT, X to exit the game\n");

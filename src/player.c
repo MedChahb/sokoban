@@ -1,8 +1,25 @@
+/**
+ * @file player.c
+ * @author Mohammed chahbaoui Mohamed yassine azaza
+ * @brief perment le changement de la position de joueur
+ * @version 0.1
+ * @date 2022-11-07
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include "../include/grid.h"
 
 // global variable contenent l'entité de la grille que le joueur a passé sur. (par defaut NONE)
 enum CaseType entite = NONE;
-
+/**
+ * @brief change les coordonnées du joueur selon la direction 
+ * 
+ * @param grille adresse de la structure Grid !!! 
+ * @param dir direction où on va déplacer le joueur
+ * @return renvoie la grille après le changement de la position de joueur :)
+ */
 void move_player(Grid* grille, enum Direction dir){
 	int colonne = grille->column_number; // nmbr de colonne de la grille
 	int ligne = grille->row_number; // nmbr de ligne de la grille
