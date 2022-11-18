@@ -1,4 +1,13 @@
-#include <stdio.h>
+/**
+ * @file main.c
+ * @author Mohammed chahbaoui Mohamed yassine azaza
+ * @brief 
+ * @version 0.1
+ * @date 2022-11-18
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include "../include/grid.h"
 #include <stdbool.h>
 #include <ctype.h>

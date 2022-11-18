@@ -1,8 +1,23 @@
+/**
+ * @file grid.h
+ * @author Mohammed chahbaoui Mohamed yassine azaza (you@domain.com)
+ * @brief hearder pour le grid.c
+ * @version 0.1
+ * @date 2022-11-07
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #ifndef GRID_HEADER
 #define GRID_HEADER
 
 #include <stdio.h>
 #include "player.h"
+/**
+ * @brief specifie chaque caractere de la grille par un nom
+ * 
+ */
 enum CaseType{
 	WALL = '#',
 	BOX = '$',
@@ -12,7 +27,7 @@ enum CaseType{
 };
 /**
  * @struct Grid grid.h
- * @brief Cette structure contient les informations 
+ * @brief Cette structure contient la grille et ces dimensions.
  * concernant la grille du jeu et son contenu
  */
 typedef struct {
