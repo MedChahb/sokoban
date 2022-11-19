@@ -3,7 +3,7 @@
 ## c'est quoi le sokoban ?
 - preview du jeu :  
 
-<div><img src="../img/Sokoban_ani.gif" width="20%"></div>  
+<div><img src="img/Sokoban_ani.gif" width="20%"></div>  
 
 - lien vers la page wikipedia du jeu : <a href="https://fr.wikipedia.org/wiki/Sokoban">sokoban </a>
 
@@ -22,7 +22,7 @@ Après la creation de certains fichiers dans votre repetoire courant, taper la c
 - La structure de donne optée pour approché le probleme : <div> <ol> <li>
 on represente, la grille du sokoban qu'on joue sur, par un tableau unidimensionnel qu'on l'affichera sous forme d'une 
 grille double dimension, <br>et deux entiers qui representent les dimensions de la grille.</li> <li>
-la grille affichée et d'origine un ficher <b>.txt</b> : <div style="text-align:center"><p><img src="../img/grille.png" width="15%"></p> <p> 
+la grille affichée et d'origine un ficher <b>.txt</b> : <div style="text-align:center"><p><img src="img/grille.png" width="15%"></p> <p> 
 <u><b>legende</b></u> : </p> <p>
 '#' représente un mur. </p> <p>
 '$' représente un cube. </p> <p>
