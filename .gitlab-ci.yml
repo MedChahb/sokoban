@@ -17,7 +17,7 @@ pages:
   script:
   - doxygen -u
   - doxygen Doxyfile
-  - mv doc/html/ public/
+  - mv doc/ public/
   artifacts:
     paths:
     - public
