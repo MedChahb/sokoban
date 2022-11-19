@@ -1,4 +1,4 @@
-sudo apt-get doxygen
-sudo apt-get graphviz
+sudo apt-get install doxygen
+sudo apt-get install graphviz
 make clean
 make
