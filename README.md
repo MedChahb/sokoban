@@ -3,7 +3,7 @@
 ## c'est quoi le sokoban ?
 - preview du jeu :  
 
-<div><img src="../img/Sokoban_ani.gif" width="15%"></div>  
+<div><img src="../img/Sokoban_ani.gif" width="20%"></div>  
 
 - lien vers la page wikipedia du jeu : <a href="https://fr.wikipedia.org/wiki/Sokoban">sokoban </a>
 
@@ -42,18 +42,18 @@ En fin l'affichage de la grille après la mise à jour du Player par la fonction
 ***
 ## Les obstacles qu'on a surmonté.
 - <b>les obstacles de programmation</b>:
-<ol> 
+<ol>  
 <li> La mise à jour des coordoonées du Player après le mouvement: Player existe dans un tableau (unidimensionnel), son deplacement necessite de tenir compte le changement qui sera lieu dans l'affichage de la grille (bidimensionnel). Par exemple si Player se deplace en 'HAUT' (dans la grille 2D), ce meme Player se deplace d'une valeur '-row' dans le tableau 1D.
 > Donc il foudra trouver une fonction qui lie entre le deplacement de 2D en 1D. (voir le source de player.c)</li>
 <li> La perte des charactères (les entités) de la grille pendant le deplacement du Player: quand Player passe par un GOAL par exemple, cet entité se fait remplacer par l'entité NONE, ce qui supprime GOAL de la Grille.
 > Solution opté: utilisé un variable global (enum CaseType entite dans player.c) de valeur NONE par defaut, qui enregistre chanque entité passée par Player afin qu'on le supprime pas.</li></ol>
 
-- <b> Les obstacles d'organisation: </b> <ol>
+- <b> Les obstacles d'organisation: </b> <ol>  
 <li> mettre chaque ficher dans un dossier afin de les filtrés selon leurs extensions: Exemple *.c dans le rep src/. Ce qui a causé d'autres probelèmes de compilation et de documentation.</li>
 <li> Ameliorer le Makefile: arriver à compiler tous les fichiers (chacun dans son rep) avec une syntax de Makefile plus evoluée pour des raisons d'optimisation.</li>
 </ol>
 
-- <b> Les obstacles de la Documentation: </b> <ol>
+- <b> Les obstacles de la Documentation: </b> <ol>  
 <li> Activation des Options du Doxyfile pour une bonne affichage de la Doc. </li>
 <li> Affichage des images sur la Documentation Doxygen: l'execution du script sokoban.sh crée une documentation HTML dans le rep doc/, mais par consequence les images ne s'affichent pas sur Doxygen (gitlab OUI), parceque les images que se fichier HTML affichent sont que qui sont dans le rep Doc/.</li>
 > Solution opté: integrer une command dans le fichier <u>Makefile</u> qui copie le rep img/ dans le rep doc/ afin que le fichier HTML le trouve et l'affiche. (cp -r img/ doc/)</ol>
