@@ -1,0 +1,25 @@
+image: alpine
+
+before_script:
+- apk update
+- apk add doxygen
+## Uncomment the following line if you use graphviz dot graphs
+- apk add ttf-freefont graphviz
+
+test:
+  script:
+  - doxygen -u
+  - doxygen Doxyfile
+  rules:
+    - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
+  
+pages:
+  script:
+  - doxygen -u
+  - doxygen Doxyfile
+  - mv doc/html/ public/
+  artifacts:
+    paths:
+    - public
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
