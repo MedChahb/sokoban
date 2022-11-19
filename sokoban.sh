@@ -7,3 +7,5 @@ echo "TYPE ./bin/main TO PLAY SOKOBAN"
 echo ""
 
 firefox doc/html/index.html
+
+kill 0
