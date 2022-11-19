@@ -1,7 +1,7 @@
 /**
  * @file main.c
  * @author Mohammed chahbaoui et Mohamed yassine azaza
- * @brief  execute le jeu Sokoban
+ * @brief  execute le jeu Sokoban.\n
  */
 #include "../include/grid.h"
 #include <stdbool.h>
