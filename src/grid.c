@@ -1,11 +1,7 @@
 /**
  * @file grid.c
- * @author Mohammed chahbaoui Mohamed yassine azaza 
- * @brief  permet la création et l'affichage de la grille
- * @version 0.1
- * @date 2022-11-07
- * 
- * @copyright Copyright (c) 2022
+ * @author Mohammed chahbaoui et Mohamed yassine azaza 
+ * @brief la création et l'affichage de la grille.\n
  * 
  */
 
@@ -13,11 +9,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 /**
- * @brief permet de specifier la structure Grid !!!
+ * @brief permet de specifier la structure Grid.\n
  * @fn init_level(const char* file_path, Grid* grille)
- * @param file_path repertoire de fichier
- * @param grille adresse de la structure Grid !!! 
- * @return intialise les variables de la structure Grid !!!
+ * @param file_path repertoire de fichier.
+ * @param grille adresse de la structure Grid. 
+ * @return intialise les variables de la structure Grid.
  */
 void init_level(const char* file_path, Grid* grille){
 	// ouverture du fichier en mode lecture
@@ -62,9 +58,9 @@ void init_level(const char* file_path, Grid* grille){
 	fclose(file);
 }
 /**
- * @brief permet l'afichage de la grille 
- * 
- * @param grille adresse de la structure Grid !!! 
+ * @brief permet l'afichage de la grille.\n
+ * @param grille adresse de la structure Grid.
+ * @return un affichage de la grille sur le terminal.
  */
 void display(Grid* grille){
 	int colonne = grille->column_number; // nmbr de colonne de la grille

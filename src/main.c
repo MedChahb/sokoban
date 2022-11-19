@@ -1,18 +1,15 @@
 /**
  * @file main.c
- * @author Mohammed chahbaoui Mohamed yassine azaza
- * @brief  permet l'éxecution de code
- * @version 0.1
- * @date 2022-11-07
- * 
- * @copyright Copyright (c) 2022
- * 
+ * @author Mohammed chahbaoui et Mohamed yassine azaza
+ * @brief  execute le jeu Sokoban
  */
 #include "../include/grid.h"
 #include <stdbool.h>
 #include <ctype.h>
 /**
- * @brief début de la main
+ * @brief lit les directions entrées par le l'utilisateur tout en affichant la grille.\n
+ * @param void
+ * @return affiche la nouvelle grille tant que X n'est pas appuyée.
  */
 int main(void){
 	Grid grille; 

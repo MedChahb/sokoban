@@ -1,11 +1,7 @@
 /**
  * @file grid.h
- * @author Mohammed chahbaoui Mohamed yassine azaza (you@domain.com)
+ * @author Mohammed chahbaoui et Mohamed yassine azaza
  * @brief hearder pour le grid.c
- * @version 0.1
- * @date 2022-11-07
- * 
- * @copyright Copyright (c) 2022
  * 
  */
 
@@ -15,22 +11,21 @@
 #include <stdio.h>
 #include "player.h"
 /**
- * @brief specifie chaque caractere de la grille par un nom
- * 
+ * @enum
+ * @brief specifie chaque charactaire du la Grille par un nom.\n
  */
 enum CaseType{
-	WALL = '#',
-	BOX = '$',
-	PLAYER = '@',
-	GOAL = '.',
-	NONE = ' '
+	WALL = '#',/**< '#'*/
+	BOX = '$',/**< '$'*/
+	PLAYER = '@',/**< '@'*/
+	GOAL = '.',/**< '.'*/
+	NONE = ' '/**< ' ' (espace)*/
 };
 /**
  *\typedef typedef struct Grid;
  * type synonyme de \c struct \c Grid
  * @struct Grid grid.h
- * @brief Cette structure contient la grille et ces dimensions.
- * concernant la grille du jeu et son contenu
+ * @brief structure qui contient la grille et ces dimensions avec les coordonnées du Player.\n
  */
 typedef struct {
 	enum CaseType* game_grid; /**< Tableau contenant les entités présents dans le jeu */
