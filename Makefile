@@ -28,7 +28,7 @@ archive :
 	tar -cf sokoban.tar.gz $(I_REP) $(S_REP) $(H_REP) levels/ Doxyfile Makefile README.md sokoban.sh
 	
 archive_all:
-	tar -cf sokoban.tar.gz */ Doxyfile Makefile README.md sokoban.sh
+	tar -cf sokoban.tar.gz */ Doxyfile Makefile README.md sokoban_all.sh
 
 #images pour la documentation
 move_image:
