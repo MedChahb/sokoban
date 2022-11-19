@@ -1,4 +1,5 @@
 # Exclude rep
-/obj
-/bin
-/doc
+obj/
+bin/
+doc/
+.vscode/
