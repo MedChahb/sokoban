@@ -9,8 +9,11 @@ EXE = $(B_REP)main
 SRC = $(wildcard $(S_REP)*.c)
 OBJ = $(SRC:$(S_REP)%.c=$(O_REP)%.o)
 
+CFLAGS = -Wall -Wextra
+LDLIBS = -lm
+
 $(EXE) : $(OBJ) | $(B_REP) $(D_REP) move_image
-	gcc $^ -lm -o $@ 
+	gcc $^ $(CFLAGS) $(LDLIBS) -o $@ 
 
 $(O_REP)%.o : $(S_REP)%.c | $(O_REP)
 	gcc -c $< -o $@
@@ -21,6 +24,10 @@ $(B_REP) $(O_REP) :
 $(D_REP) :
 	doxygen Doxyfile
 
+archive : 
+	tar -cf sokoban.tar.gz */ Doxyfile Makefile README.md sokoban.sh
+
+#images pour la documentation
 move_image:
 	cp -r $(I_REP) $(D_REP)
 
