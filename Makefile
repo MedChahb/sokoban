@@ -25,11 +25,14 @@ $(D_REP) :
 	doxygen Doxyfile
 
 archive : 
+	tar -cf sokoban.tar.gz $(I_REP) $(S_REP) $(H_REP) levels/ Doxyfile Makefile README.md sokoban.sh
+	
+archive_all:
 	tar -cf sokoban.tar.gz */ Doxyfile Makefile README.md sokoban.sh
 
 #images pour la documentation
 move_image:
-	cp -r $(I_REP) $(D_REP)
+	cp -r $(I_REP) $(D_REP)html/
 
 clean :
 	rm -r $(O_REP) $(B_REP) $(D_REP)
