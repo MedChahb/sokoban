@@ -1,5 +1,8 @@
 # projet sokoban
 
+### Documentation Doxygen de Sokoban:
+- pour plus details consulter : <a href="https://project1sokoban1gamel2.on.drv.tw/Sokoban/html/"> documentation sokoban </a>
+
 ## c'est quoi le sokoban ?
 - preview du jeu :  
 
