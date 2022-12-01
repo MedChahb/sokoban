@@ -32,7 +32,6 @@ int main(void){
 			case 'd':
 				move_player(&grille, RIGHT);
 				break;
-			
 			case 'x' :{
 				run = false;
 				break;

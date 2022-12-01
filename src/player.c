@@ -14,7 +14,7 @@ enum CaseType entite = NONE;
  * 
  * @param grille adresse de la structure Grid.
  * @param dir direction où on va déplacer le joueur.
- * @return renvoie la grille après le changement de la position de joueur.
+ * @return renvoie la grille après le changement de la position de joueur et les box.
  */
 void move_player(Grid* grille, enum Direction dir){
 	int colonne = grille->column_number; // nmbr de colonne de la grille
@@ -40,7 +40,9 @@ void move_player(Grid* grille, enum Direction dir){
 			
 			// s'assurer de ne pas depasser un murs ou un box (ne pas depasser les boxs === ne pas sortir de la zone
 			// puisque la grille est entouré des murs)
-			if (grille->game_grid[coord_player_1D] == BOX || grille->game_grid[coord_player_1D] == WALL){
+			// si on passera sur un WALL OU Entre un WALL (OU un autre BOX) et le joueur y a Box 
+			enum CaseType dessus_de_ou_on_vas = grille->game_grid[coord_player_1D - colonne];
+			if (grille->game_grid[coord_player_1D] == WALL ||((dessus_de_ou_on_vas == WALL || dessus_de_ou_on_vas == BOX)&& grille->game_grid[coord_player_1D] == BOX)){ 
 				// on rechange les coords de tel sort qu'on a rien fait
 				(grille->Player).y +=1;
 				coord_player_1D += colonne;
@@ -50,6 +52,12 @@ void move_player(Grid* grille, enum Direction dir){
 				printf("\n!! MOUVEMENT INVALIDE !!\n");
 			}
 			
+			if (grille->game_grid[coord_player_1D] == BOX ){
+				int coord_box_1D = coord_player_1D;
+				int ou_mettre_box = coord_player_1D - colonne; // ou sera le box apres mvmt
+				grille->game_grid[ou_mettre_box] = BOX; // placer le box
+				entite = NONE; // pour ne pas placer le box ou il etait apres son mvmt
+			}
 			
 			// placement du PLayer apres maj des son coord 
 			grille->game_grid[coord_player_1D] = PLAYER; 
@@ -66,13 +74,21 @@ void move_player(Grid* grille, enum Direction dir){
 			
 			entite = grille->game_grid[coord_player_1D];
 
-			if (grille->game_grid[coord_player_1D] == BOX || grille->game_grid[coord_player_1D] == WALL){
+			enum CaseType dessous_de_ou_on_vas = grille->game_grid[coord_player_1D + colonne];
+			if (grille->game_grid[coord_player_1D] == WALL || ((dessous_de_ou_on_vas == WALL || dessous_de_ou_on_vas == BOX) && grille->game_grid[coord_player_1D] == BOX)){
 
 				(grille->Player).y -=1;
 				coord_player_1D -= colonne;
 				printf("\n!! MOUVEMENT INVALIDE !!\n\n");
 				entite = NONE;
 				boolean = 0;
+			}
+
+			if (grille->game_grid[coord_player_1D] == BOX ){
+				int coord_box_1D = coord_player_1D;
+				int ou_mettre_box = coord_player_1D + colonne; // ou sera le box apres mvmt
+				grille->game_grid[ou_mettre_box] = BOX; // placer le box
+				entite = NONE; // pour ne pas placer le box ou il etait apres son mvmt
 			}
 			
 			grille->game_grid[coord_player_1D] = PLAYER; 
@@ -87,14 +103,21 @@ void move_player(Grid* grille, enum Direction dir){
 			
 			entite = grille->game_grid[coord_player_1D];
 
-			if (grille->game_grid[coord_player_1D] == BOX || grille->game_grid[coord_player_1D] == WALL){
+			enum CaseType right_de_ou_on_vas = grille->game_grid[coord_player_1D +1 ];
+			if (grille->game_grid[coord_player_1D] == WALL ||((right_de_ou_on_vas == WALL || right_de_ou_on_vas == BOX)&& grille->game_grid[coord_player_1D] == BOX)){
 				(grille->Player).x -=1;
 				coord_player_1D -= 1;
 				printf("\n!! MOUVEMENT INVALIDE !!\n\n");
 				entite = NONE;
 				boolean = 0;
 			}
-			
+			if (grille->game_grid[coord_player_1D] == BOX ){
+				int coord_box_1D = coord_player_1D;
+				int ou_mettre_box = coord_player_1D + 1; // ou sera le box apres mvmt
+				grille->game_grid[ou_mettre_box] = BOX; // placer le box
+				entite = NONE; // pour ne pas placer le box ou il etait apres son mvmt
+			}
+
 
 			grille->game_grid[coord_player_1D] = PLAYER; 
 			break;
@@ -108,12 +131,20 @@ void move_player(Grid* grille, enum Direction dir){
 			
 			entite = grille->game_grid[coord_player_1D];
 			
-			if (grille->game_grid[coord_player_1D] == BOX || grille->game_grid[coord_player_1D] == WALL){
+			enum CaseType left_de_ou_on_vas = grille->game_grid[coord_player_1D - 1];
+			if (grille->game_grid[coord_player_1D] == WALL ||((left_de_ou_on_vas == WALL || left_de_ou_on_vas == BOX)&& grille->game_grid[coord_player_1D] == BOX)){
 				(grille->Player).x +=1;
 				coord_player_1D += 1;
 				printf("\n!! MOUVEMENT INVALIDE !!\n\n");
 				entite = NONE;
 				boolean = 0;
+			}
+
+			if (grille->game_grid[coord_player_1D] == BOX ){
+				int coord_box_1D = coord_player_1D;
+				int ou_mettre_box = coord_player_1D - 1; // ou sera le box apres mvmt
+				grille->game_grid[ou_mettre_box] = BOX; // placer le box
+				entite = NONE; // pour ne pas placer le box ou il etait apres son mvmt
 			}
 			
 			grille->game_grid[coord_player_1D] = PLAYER; 
