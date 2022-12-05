@@ -42,5 +42,6 @@ void init_level(const char* file_path, Grid* grille);
 void display(Grid* grille);
 void move_player(Grid* grille, enum Direction dir);
 void coord_goals(Grid* grille);
+void cible_couvert(Grid* grille);
 
 #endif
