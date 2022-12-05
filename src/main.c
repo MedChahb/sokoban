@@ -38,6 +38,10 @@ int main(void){
 				break;
 			}
 		}
+		if(grille.nbr_cibles==grille.nbr_cibles_couvert){
+			printf("YOU WON !\n");
+			run = false;
+		}
 	}
 	
 	

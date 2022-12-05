@@ -16,8 +16,9 @@
  * @return intialise les variables de la structure Grid.
  */
 void init_level(const char* file_path, Grid* grille){
-	// ouverture du fichier en mode lecture
 	grille->nbr_cibles=0;
+	grille->nbr_cibles_couvert=0;
+	// ouverture du fichier en mode lecture
 	FILE* file = fopen(file_path, "r");
 	if(!file){
 		fprintf(stderr, "Error %s not found", file_path);
