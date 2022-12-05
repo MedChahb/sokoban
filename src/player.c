@@ -10,7 +10,8 @@
 
 
 int* tab_coord_cibles; // un tableau global contenant les coord de tous les cibles (avant de jouer)
-
+enum CaseType box_passe_sur = NONE;
+enum CaseType entite = NONE;
 /**
  * @brief change les coordonnées du joueur selon la direction.\n 
  * 
@@ -37,6 +38,7 @@ void move_player(Grid* grille, enum Direction dir){
 			(grille->Player).y -=1;
 			coord_player_1D -= colonne;
 			
+			entite = grille->game_grid[coord_player_1D] ;
 			
 			// s'assurer de ne pas depasser un murs ou un box (ne pas depasser les boxs === ne pas sortir de la zone
 			// puisque la grille est entouré des murs)
@@ -53,6 +55,7 @@ void move_player(Grid* grille, enum Direction dir){
 			if (grille->game_grid[coord_player_1D] == BOX ){
 				int coord_box_1D = coord_player_1D;
 				int ou_mettre_box = coord_player_1D - colonne; // ou sera le box apres mvmt
+				box_passe_sur = grille->game_grid[ou_mettre_box];
 				grille->game_grid[ou_mettre_box] = BOX; // placer le box
 			}
 			
@@ -70,6 +73,7 @@ void move_player(Grid* grille, enum Direction dir){
 			(grille->Player).y +=1;
 			coord_player_1D += colonne;
 			
+			entite = grille->game_grid[coord_player_1D] ;
 
 			enum CaseType dessous_de_ou_on_vas = grille->game_grid[coord_player_1D + colonne];
 			if (grille->game_grid[coord_player_1D] == WALL || ((dessous_de_ou_on_vas == WALL || dessous_de_ou_on_vas == BOX) && grille->game_grid[coord_player_1D] == BOX)){
@@ -83,6 +87,7 @@ void move_player(Grid* grille, enum Direction dir){
 			if (grille->game_grid[coord_player_1D] == BOX ){
 				int coord_box_1D = coord_player_1D;
 				int ou_mettre_box = coord_player_1D + colonne; // ou sera le box apres mvmt
+				box_passe_sur = grille->game_grid[ou_mettre_box];
 				grille->game_grid[ou_mettre_box] = BOX; // placer le box
 			}
 			
@@ -96,6 +101,8 @@ void move_player(Grid* grille, enum Direction dir){
 			(grille->Player).x +=1;
 			coord_player_1D += 1;
 
+			entite = grille->game_grid[coord_player_1D] ;
+
 			enum CaseType right_de_ou_on_vas = grille->game_grid[coord_player_1D +1 ];
 			if (grille->game_grid[coord_player_1D] == WALL ||((right_de_ou_on_vas == WALL || right_de_ou_on_vas == BOX)&& grille->game_grid[coord_player_1D] == BOX)){
 				(grille->Player).x -=1;
@@ -106,6 +113,7 @@ void move_player(Grid* grille, enum Direction dir){
 			if (grille->game_grid[coord_player_1D] == BOX ){
 				int coord_box_1D = coord_player_1D;
 				int ou_mettre_box = coord_player_1D + 1; // ou sera le box apres mvmt
+				box_passe_sur = grille->game_grid[ou_mettre_box];
 				grille->game_grid[ou_mettre_box] = BOX; // placer le box
 			}
 
@@ -120,7 +128,8 @@ void move_player(Grid* grille, enum Direction dir){
 			(grille->Player).x -=1;
 			coord_player_1D -= 1;
 			
-			
+			entite = grille->game_grid[coord_player_1D] ;
+
 			enum CaseType left_de_ou_on_vas = grille->game_grid[coord_player_1D - 1];
 			if (grille->game_grid[coord_player_1D] == WALL ||((left_de_ou_on_vas == WALL || left_de_ou_on_vas == BOX)&& grille->game_grid[coord_player_1D] == BOX)){
 				(grille->Player).x +=1;
@@ -132,6 +141,7 @@ void move_player(Grid* grille, enum Direction dir){
 			if (grille->game_grid[coord_player_1D] == BOX ){
 				int coord_box_1D = coord_player_1D;
 				int ou_mettre_box = coord_player_1D - 1; // ou sera le box apres mvmt
+				box_passe_sur = grille->game_grid[ou_mettre_box];
 				grille->game_grid[ou_mettre_box] = BOX; // placer le box
 			}
 			
@@ -142,24 +152,49 @@ void move_player(Grid* grille, enum Direction dir){
 			printf("\ninvalide key\n");	
 		
 	}
+
 	for(int i=0 ; i<grille->nbr_cibles; i++){
+		// replacer les cibles supprimés pendant le mouvement de PLayer et BOX	
 		if(grille->game_grid[tab_coord_cibles[i]]==NONE){
 			grille->game_grid[tab_coord_cibles[i]] = GOAL;
 		}
 	}
-	// affichage la grille aprés le mvmt	
-	if (boolean)		
-	display(grille);	
+	// si le mvmt donné est valide alors 
+	if (boolean){
+		for(int i=0 ; i<grille->nbr_cibles; i++){
+		// replacer les cibles supprimés pendant le mouvement de PLayer et BOX	
+		if(grille->game_grid[tab_coord_cibles[i]]==NONE){
+			grille->game_grid[tab_coord_cibles[i]] = GOAL;
+			}
+		}
+		// aficher la grille
+		display(grille);
+		cible_couvert(grille);
+	}			
 }
 
 void coord_goals(Grid* grille){
 	int size_grid = grille->column_number * grille->row_number;
 	int j = 0;
-	tab_coord_cibles = malloc(sizeof(int)*size_grid);
+	tab_coord_cibles = malloc(sizeof(int)*grille->nbr_cibles);
 	for(int i=0 ; i<size_grid ; i++){
 		if(grille->game_grid[i]==GOAL){
 			tab_coord_cibles[j] = i;
 			j++;
 		}
 	}
+}
+
+void cible_couvert(Grid* grille){
+	int colonne = grille->column_number; // nmbr de colonne de la grille
+	int ligne = grille->row_number; // nmbr de ligne de la grille
+
+	int nbr_cible_non_couvert=0;
+	for(int i=0; i<grille->nbr_cibles; i++){
+		if(grille->game_grid[tab_coord_cibles[i]]!=BOX){
+			nbr_cible_non_couvert++;
+		}
+	}
+	// m-à-j du champs nbr_cibles_couvert apres chaque appel (mvmt)
+	grille->nbr_cibles_couvert = grille->nbr_cibles - nbr_cible_non_couvert;
 }
