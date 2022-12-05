@@ -12,8 +12,9 @@
  * @return affiche la nouvelle grille tant que X n'est pas appuyée.
  */
 int main(void){
-	Grid grille; 
-	init_level("levels/level1.txt", &grille); 
+	Grid grille;
+	init_level("levels/level1.txt", &grille);
+	coord_goals(&grille); 
 	display(&grille);
 	
 	bool run = true;

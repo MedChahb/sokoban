@@ -17,6 +17,7 @@
  */
 void init_level(const char* file_path, Grid* grille){
 	// ouverture du fichier en mode lecture
+	grille->nbr_cibles=0;
 	FILE* file = fopen(file_path, "r");
 	if(!file){
 		fprintf(stderr, "Error %s not found", file_path);
@@ -42,6 +43,10 @@ void init_level(const char* file_path, Grid* grille){
 			if (*buffer == PLAYER) {
 				(grille->Player).x = current_column;
 				(grille->Player).y = current_row;
+			}
+
+			if(*buffer==GOAL){
+				grille->nbr_cibles++;
 			}
 			
 			// chaque entité (pointeur) lue est placée dans la grille en utilisant la enum
