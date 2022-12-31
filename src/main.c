@@ -13,15 +13,16 @@
  * @return affiche la nouvelle grille tant que X n'est pas appuyée.
  */
 int main(int argc, char **argv){
+	/* segmentaion fault :))
 	sdl_init();
-
+	*/
 	Grid grille;
 	init_level("levels/level1.txt", &grille);
 	coord_goals(&grille); 
-	//display(&grille);
+	display(&grille);
 	
 
-	bool run = false;
+	bool run = true;
 	while(run){
 		char entry = tolower(fgetc(stdin)); // tolower() used to ignore upper and lower case
 		switch(entry){ 
@@ -47,5 +48,7 @@ int main(int argc, char **argv){
 			run = false;
 		}
 	}
-	sdl_quit();	
+	/*
+	sdl_quit();
+	*/	
 }
