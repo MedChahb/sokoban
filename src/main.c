@@ -4,6 +4,7 @@
  * @brief  execute le jeu Sokoban.\n
  */
 #include "../include/grid.h"
+#include "../../SokobanTechDev/src/sdl2.h"
 #include <stdbool.h>
 #include <ctype.h>
 /**
@@ -11,13 +12,16 @@
  * @param void
  * @return affiche la nouvelle grille tant que X n'est pas appuyée.
  */
-int main(void){
+int main(int argc, char **argv){
+	sdl_init();
+
 	Grid grille;
 	init_level("levels/level1.txt", &grille);
 	coord_goals(&grille); 
-	display(&grille);
+	//display(&grille);
 	
-	bool run = true;
+
+	bool run = false;
 	while(run){
 		char entry = tolower(fgetc(stdin)); // tolower() used to ignore upper and lower case
 		switch(entry){ 
@@ -43,7 +47,5 @@ int main(void){
 			run = false;
 		}
 	}
-	
-	
+	sdl_quit();	
 }
-
