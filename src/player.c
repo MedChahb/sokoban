@@ -8,7 +8,6 @@
 #include "../include/grid.h"
 #include <stdlib.h>
 
-
 int* tab_coord_cibles; // un tableau global contenant les coord de tous les cibles (avant de jouer)
 enum CaseType box_passe_sur = NONE;
 enum CaseType entite = NONE;
