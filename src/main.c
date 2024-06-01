@@ -4,7 +4,6 @@
  * @brief  execute le jeu Sokoban.\n
  */
 #include "../include/grid.h"
-#include "../../SokobanTechDev/src/sdl2.h"
 #include <stdbool.h>
 #include <ctype.h>
 /**
